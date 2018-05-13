@@ -52,14 +52,14 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import { Component, Vue } from 'vue-property-decorator';
 import { Layer } from '@/models/layer';
 import { ObjectUtil } from '@/util/object';
 
 @Component
 export default class CalculationForm extends Vue {
   // Consts
-  private static readonly formInitialValues: any = {
+  private static readonly FORM_INITIAL_VALUES: any = {
     needed: {
       tonnage: 10000,
       content: 59,
@@ -81,14 +81,14 @@ export default class CalculationForm extends Vue {
     { value: Layer.SillonA, text: Layer.SillonA },
     { value: Layer.SillonB, text: Layer.SillonB },
   ];
-  private form: any = ObjectUtil.deepCopy(CalculationForm.formInitialValues);
+  private form: any = ObjectUtil.deepCopy(CalculationForm.FORM_INITIAL_VALUES);
 
   // Methods
   private onSubmit(evt: any) {
     console.log(this.form);
   }
   private onReset(evt: any) {
-    this.form = ObjectUtil.deepCopy(CalculationForm.formInitialValues);
+    this.form = ObjectUtil.deepCopy(CalculationForm.FORM_INITIAL_VALUES);
   }
 }
 </script>

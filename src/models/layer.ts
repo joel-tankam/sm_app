@@ -9,9 +9,14 @@ export enum Layer {
     SillonB = "Sillon B"
 }
 
-export default class LayerDatas {
+export class LayerDatas {
     private layerId!: Layer;
-    private tonnage!: number;
-    private content!: number;
-    private granulometry!: number;
+    public content!: number;
+    public granulometry!: number;
+
+    public constructor(layerId: Layer, content: number = 0, granulometry: number = 0) {
+        this.layerId = layerId;
+        this.content = content;
+        this.granulometry = granulometry;
+    }
 }
