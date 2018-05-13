@@ -1,18 +1,19 @@
 <template>
   <div class="home">
-    <img src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+    <CalculationForm @resultsGenerated="showResults" />
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
+import CalculationForm from '@/components/CalculationForm.vue';
 
 @Component({
   components: {
-  HelloWorld,
-  },
+  CalculationForm
+  }
   })
-export default class Home extends Vue {}
+export default class Home extends Vue {
+  static showResults(results: any) {}
+}
 </script>
