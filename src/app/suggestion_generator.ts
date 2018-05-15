@@ -5,12 +5,14 @@ import { CalculationConfig } from "@/models/config";
 export class SuggestionGenerator {
     public static GetFromForm(form: any): any[][] {
         let A: number[][] = [[1, 1], [0, 0]];
-        let x: number[] = [form.needed.tonnage, 0];
+        let x: number[] = [0, 0];
+
 
         let c: number = Number(form.needed.tonnage) * Number(form.needed.content);
         let givenLayer = CalculationConfig.GetLayerDatas(form.given.layer);
-        c -= givenLayer.content * givenLayer.granulometry - Number(form.given.tonnage);
+        c -= givenLayer.content * givenLayer.granulometry * Number(form.given.tonnage);
 
+        x[0] = Number(form.needed.tonnage) - Number(form.given.tonnage);
         x[1] = c;
         let unknownLayer1 = CalculationConfig.GetLayerDatas(form.given.mixedLayers[0]);
         let unknownLayer2 = CalculationConfig.GetLayerDatas(form.given.mixedLayers[1]);
@@ -19,8 +21,8 @@ export class SuggestionGenerator {
 
         let sol = Gauss.solve(A, x);
         return [[
-            { layer: unknownLayer1.layerId, content: unknownLayer1.content, granulometry: unknownLayer1.granulometry, tonnage: sol[0] },
-            { layer: unknownLayer2.layerId, content: unknownLayer2.content, granulometry: unknownLayer2.granulometry, tonnage: sol[1] },
+            { couche: unknownLayer1.layerId, teneur: unknownLayer1.content, granulometrie: unknownLayer1.granulometry, tonnage: sol[0] },
+            { couche: unknownLayer2.layerId, teneur: unknownLayer2.content, granulometrie: unknownLayer2.granulometry, tonnage: sol[1] },
         ]];
     }
 }
