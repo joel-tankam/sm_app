@@ -13,4 +13,9 @@ export class CalculationConfig {
         new LayerDatas(Layer.SillonB, 60, 0.9),
     ];
     public static CURRENT: LayerDatas[] = ObjectUtil.deepCopy(CalculationConfig.DEFAULT);
+
+    public static GetLayerDatas(layer: Layer): LayerDatas {
+        var t = CalculationConfig.CURRENT.filter(ld => ld.layerId == layer);
+        return t[0];
+    }
 }

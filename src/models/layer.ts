@@ -10,7 +10,7 @@ export enum Layer {
 }
 
 export class LayerDatas {
-    private layerId!: Layer;
+    public layerId!: Layer;
     public content!: number;
     public granulometry!: number;
 

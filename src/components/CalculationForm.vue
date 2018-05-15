@@ -129,7 +129,6 @@ export default class CalculationForm extends Vue {
   @Watch("additionalLayersNumber")
   onAdditionalLayersNumberChanged(val: number, oldVal: number) {
     if (oldVal > val) {
-      console.log(val);
       for (let i = val; i <= oldVal; i += 1) {
         this.form.given.additionalTonnages[i] = 0;
       }
