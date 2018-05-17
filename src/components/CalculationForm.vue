@@ -114,7 +114,7 @@ export default class CalculationForm extends Vue {
     this.$forceUpdate();
   }
   private onSubmit(evt: any) {
-    this.$emit('formUpdated', this.form);
+    if (this.form.given.mixedLayers.length > 1) { this.$emit('formUpdated', this.form); } else alert("Sélectionnez plus d'une couche à mélanger");
   }
   private onReset(evt: any) {
     this.form = ObjectUtil.deepCopy(CalculationForm.FORM_INITIAL_VALUES);
