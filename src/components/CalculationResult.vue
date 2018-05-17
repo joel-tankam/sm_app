@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-show="resultsExist" v-for="result in results" v-bind:key="result">
+    <div v-show="resultsExist" v-for="result in results" v-bind:key="result.toString()">
       <b-table striped hover :items="result"></b-table>
     </div>
   </div>
