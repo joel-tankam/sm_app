@@ -53,6 +53,8 @@ export class SuggestionGenerator {
                 results.push(result);
             }
         }
+
+        results = results.filter(r => !r.some(c => c.tonnage < 0));
         return results;
     }
 }

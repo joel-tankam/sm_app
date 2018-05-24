@@ -1,5 +1,6 @@
 <template>
   <div>
+    <b-alert show v-show="!resultsExist">Pas de resultat disponible</b-alert>
     <div v-show="resultsExist" v-for="result in results" v-bind:key="result.toString()">
       <b-table striped hover :items="result"></b-table>
     </div>
@@ -17,11 +18,7 @@ export default class CalculationForm extends Vue {
 
   // Computed
   get resultsExist() {
-    return this.results[0].length !== 0;
+    return this.results.length !== 0 && this.results[0].length !== 0;
   }
 }
 </script>
-
-<style scoped lang="scss">
-
-</style>
