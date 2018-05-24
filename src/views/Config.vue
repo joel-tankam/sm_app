@@ -57,8 +57,13 @@ export default class Config extends Vue {
     return Config.LAYER_NAMES[id];
   }
   private onSubmit(evt: any) {
-    console.log(this.config);
-    CalculationConfig.CURRENT = ObjectUtil.deepCopy(CalculationConfig.DEFAULT);
+    this.config = this.config.map(layer =>
+      new LayerDatas(
+        layer.layerId,
+        Number(layer.content),
+        Number(layer.granulometry),
+      ));
+    CalculationConfig.CURRENT = ObjectUtil.deepCopy(this.config);
   }
   private onReset(evt: any) {
     this.config = ObjectUtil.deepCopy(CalculationConfig.DEFAULT);
